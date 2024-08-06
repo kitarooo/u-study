@@ -31,8 +31,7 @@ public class SecurityConfig extends WebSecurityConfiguration {
     };
 
     public String[] USER = {
-            "/api/v1/tasks/**",
-            "/api/v1/comments/**"
+            
     };
 
 
