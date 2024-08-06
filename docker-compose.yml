@@ -1,0 +1,14 @@
+services:
+
+  u-base:
+    container_name: u-base
+    image: postgres
+    environment:
+      POSTGRES_DB: u-base
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      PGDATA: /data/postgres
+    volumes:
+      - ./postgres-mobile:/data/postgres
+    ports:
+      - "3333:5432"
