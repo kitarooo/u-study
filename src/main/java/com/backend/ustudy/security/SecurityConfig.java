@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfiguration {
     };
 
     public String[] USER = {
-            
+
     };
 
 

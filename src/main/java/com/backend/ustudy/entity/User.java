@@ -1,5 +1,6 @@
 package com.backend.ustudy.entity;
 
+import com.backend.ustudy.entity.enums.ClientRole;
 import com.backend.ustudy.entity.enums.Role;
 import com.backend.ustudy.entity.enums.Status;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -29,12 +30,21 @@ public class User implements UserDetails {
     private String email;
 
     @Column(nullable = false)
+    String firstname;
+
+    @Column(nullable = false)
     private String password;
 
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    private String accountExpiredNumbers;
+    @Enumerated(EnumType.STRING)
+    ClientRole clientRole;
+
+    private Integer code;
+
+    @Column(nullable = false, name = "phone_number")
+    String phoneNumber;
 
     @Enumerated(EnumType.STRING)
     private Status status;
