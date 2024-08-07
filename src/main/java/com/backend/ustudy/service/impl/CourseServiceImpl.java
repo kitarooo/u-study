@@ -4,6 +4,7 @@ import com.backend.ustudy.dto.request.CourseRequest;
 import com.backend.ustudy.entity.Course;
 import com.backend.ustudy.exception.NotFoundException;
 import com.backend.ustudy.repository.CourseRepository;
+import com.backend.ustudy.repository.LessonRepository;
 import com.backend.ustudy.service.CourseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,7 @@ public class CourseServiceImpl implements CourseService {
 
     private final CourseRepository courseRepository;
     private final ImageUploadServiceImpl imageUploadService;
+    private final LessonRepository lessonRepository;
 
     @Override
     public String createCourse(CourseRequest request) {
@@ -32,6 +34,7 @@ public class CourseServiceImpl implements CourseService {
     public String deleteCourse(Long id) {
         Course course = courseRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Курс не найден!"));
+        lessonRepository.delete(id);
         courseRepository.delete(course);
         return "Курс успешно удален!";
     }
