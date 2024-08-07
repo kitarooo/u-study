@@ -39,4 +39,10 @@ public class ExcHandler {
         return new ExceptionResponse(HttpStatus.BAD_REQUEST, e.getClass().getName(), e.getMessage());
     }
 
+    @ExceptionHandler(EmptyFileException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ExceptionResponse emptyFileException(EmptyFileException e) {
+        return new ExceptionResponse(HttpStatus.NOT_MODIFIED, e.getClass().getName(), e.getMessage());
+    }
+
 }

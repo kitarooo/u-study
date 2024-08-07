@@ -56,7 +56,7 @@ public class AuthServiceImpl implements AuthService {
                 .email(request.getEmail())
                 .firstname(request.getFirstname())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .role(Role.ROLE_USER)
+                .role(Role.ROLE_UNDEFINED)
                 .clientRole(request.getRole())
                 .phoneNumber(request.getPhoneNumber())
                 .status(Status.INACTIVE)
@@ -106,6 +106,7 @@ public class AuthServiceImpl implements AuthService {
         if (user.getCode().equals(code)) {
             user.setCode(null);
             user.setStatus(Status.ACTIVE);
+            user.setRole(Role.ROLE_USER);
             userRepository.save(user);
             return "Вы успешно подтвердили свой аккаунт!";
         } else {

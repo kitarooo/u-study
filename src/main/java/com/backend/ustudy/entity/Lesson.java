@@ -3,7 +3,7 @@ package com.backend.ustudy.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Data
+
 @Getter
 @Setter
 @NoArgsConstructor
